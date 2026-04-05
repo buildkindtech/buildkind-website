@@ -213,7 +213,7 @@ function MaskedInput({ value, rawValue, visible, onToggle, onChange, placeholder
       <div style={{ position: "relative" }}>
         <input
           type={visible ? "text" : "password"}
-          value={visible ? rawValue : value}
+          value={rawValue}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           style={{ ...inputStyle, paddingRight: 42, borderColor: error ? "#dc2626" : BORDER }}
