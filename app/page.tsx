@@ -307,7 +307,7 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
               {[
                 { name: "Website redesign", price: "From $2,500", desc: "Most full builds land around $5,000–$8,500 depending on content, pages, gallery depth, local SEO, and launch support.", points: ["Modern frame-shop website", "Content migration", "Local SEO foundation", "Inquiry/quote forms"] },
-                { name: "SimpleFrame SaaS", price: "$7–$29/mo", desc: "Self-serve quoting and preview tools for shops that want to start with software before deeper integration.", points: ["Vendor catalogs", "Pricing calculator", "Frame preview", "Saved designs and invoices"] },
+                { name: "SimpleFrame POS", price: "$69/mo", desc: "Our cloud POS for custom frame shops — pricing, vendor catalogs, live frame preview, work orders, customers, and invoices in one place. White-glove setup and data migration included.", points: ["Custom framing POS", "120,000+ moulding catalog", "Live frame preview", "Work orders & invoices"] },
                 { name: "Custom workflow", price: "Custom quote", desc: "For payment flows, POS/API integration, staff dashboards, advanced automation, and ongoing operations support.", points: ["Stripe/payment flows", "POS-ready handoff", "Automation and follow-up", "Monthly support"] },
               ].map((p) => (
                 <div key={p.name} className="rounded-2xl border border-gray-200 bg-white p-7 shadow-sm">
