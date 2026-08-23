@@ -5,22 +5,22 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "BuildKind Tech — Frame Shop Websites & Ordering Workflows",
+  title: "BuildKind Tech — Frame Shop Websites, SimpleFrame & Lower Card Fees",
   description:
-    "BuildKind builds modern websites, SimpleFrame ordering tools, and practical workflow systems for custom frame shops.",
+    "BuildKind builds modern websites and SimpleFrame POS for custom frame shops — including a merchant fee guarantee to beat the card-processing fees you currently pay.",
   keywords:
-    "frame shop website, custom framing website, framing software, SimpleFrame, online framing quote, frame shop workflow, framing calculator",
+    "frame shop website, custom framing website, framing software, SimpleFrame, merchant processing, card processing fees, online framing quote, frame shop workflow, framing calculator",
   openGraph: {
-    title: "BuildKind Tech — Frame Shop Websites & Ordering Workflows",
+    title: "BuildKind Tech — Frame Shop Websites, SimpleFrame & Lower Card Fees",
     description:
-      "Websites, quote flows, online ordering, and SimpleFrame technology built specifically for custom frame shops.",
+      "Websites, SimpleFrame POS, and a merchant fee guarantee: shops pay lower card-processing fees than they currently pay.",
     url: "https://buildkind.tech",
     siteName: "BuildKind Tech",
   },
   twitter: {
     card: "summary",
-    title: "BuildKind Tech — Frame Shop Websites & Ordering Workflows",
-    description: "Websites and ordering workflows built specifically for custom frame shops.",
+    title: "BuildKind Tech — Frame Shop Websites, SimpleFrame & Lower Card Fees",
+    description: "Websites, SimpleFrame POS, and a merchant fee guarantee for custom frame shops.",
   },
 };
 
