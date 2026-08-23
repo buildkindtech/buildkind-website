@@ -25,10 +25,37 @@ const WARM = "#faf7f1";
 
 const navLinks = [
   { label: "Services", href: "#services" },
-  { label: "Workflow", href: "#workflow" },
+  { label: "SimpleFrame", href: "#simpleframe" },
   { label: "Work", href: "#recent-work" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
+];
+
+const simpleFrameModes = [
+  ["Standalone", "iPad or desktop quoting."],
+  ["Embedded", "Website quote requests and previews."],
+  ["Merchant", "Integrated card processing that beats your current fees."],
+];
+
+const pricingTracks = [
+  {
+    name: "Website redesign",
+    price: "From $2,500",
+    desc: "Most full builds land around $5,000–$8,500 depending on content, pages, gallery depth, local SEO, and launch support.",
+    points: ["Modern frame-shop website", "Content migration", "Local SEO foundation", "Inquiry/quote forms"],
+  },
+  {
+    name: "SimpleFrame POS",
+    price: "$69/mo",
+    desc: "Our cloud POS for custom frame shops — pricing, vendor catalogs, live frame preview, work orders, customers, invoices, and integrated merchant processing. White-glove setup and data migration included.",
+    points: ["Custom framing POS", "120,000+ moulding catalog", "Work orders & invoices", "Beat your current card-processing fees"],
+  },
+  {
+    name: "Custom workflow",
+    price: "Custom quote",
+    desc: "For staff dashboards, POS/API integration, advanced automation, and ongoing operations support. Shop card processing runs through SimpleFrame merchant. Stripe stays available for BuildKind SaaS billing and custom app workflows — not the register.",
+    points: ["SimpleFrame merchant for shop cards", "Stripe for SaaS / custom billing", "Automation and follow-up", "Monthly support"],
+  },
 ];
 
 const portfolio = [
@@ -55,7 +82,7 @@ const services = [
   {
     icon: Database,
     title: "SimpleFrame technology",
-    desc: "Vendor catalogs, pricing logic, real-time visual previews, invoices, Stripe payments, and POS-ready workflows when a shop needs more than a brochure site.",
+    desc: "Vendor catalogs, pricing logic, real-time visual previews, invoices, integrated merchant processing, and POS-ready workflows — with a guarantee to beat the card-processing fees you pay today.",
   },
 ];
 
@@ -63,12 +90,12 @@ const workflow = [
   { label: "Website visit", detail: "Customer finds you on Google or social", icon: Search },
   { label: "Guided request", detail: "They upload art, choose needs, and ask for a quote", icon: Monitor },
   { label: "Shop review", detail: "Staff sees the request with context instead of a vague email", icon: BarChart3 },
-  { label: "Quote + payment", detail: "SimpleFrame or your current process turns interest into an order", icon: CreditCard },
+  { label: "Quote + payment", detail: "SimpleFrame merchant turns the quote into a paid order — at lower card fees than you pay now", icon: CreditCard },
   { label: "Follow-up", detail: "Email/SMS reminders and updates keep jobs moving", icon: Mail },
 ];
 
 const process = [
-  { step: "01", title: "Audit the current flow", desc: "We review your website, Google presence, quote process, tools, and where leads fall through." },
+  { step: "01", title: "Audit the current flow", desc: "We review your website, Google presence, quote process, tools, processor statement, and where leads fall through." },
   { step: "02", title: "Design the shop-specific system", desc: "Not a generic template — the structure matches your services, gallery, customers, pricing style, and staff workflow." },
   { step: "03", title: "Build and launch", desc: "Site, content, forms, SimpleFrame embed, analytics, and local SEO are built together so the launch is usable on day one." },
   { step: "04", title: "Operate and improve", desc: "Ongoing updates, new pages, workflow tweaks, automation, and support as the shop grows." },
@@ -214,7 +241,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-white px-5 py-16 sm:px-8">
+        <section className="scroll-mt-24 bg-white px-5 py-16 sm:px-8" id="simpleframe">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div className="rounded-2xl border border-gray-200 bg-white p-3 shadow-xl shadow-gray-900/5">
@@ -232,23 +259,47 @@ export default function Home() {
               </div>
               <div>
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-amber-700">SimpleFrame</p>
-                <h2 className="text-3xl font-bold tracking-[-0.02em] text-gray-950 sm:text-4xl">Quoting and preview tools that fit into the website strategy.</h2>
-                <p className="mt-4 text-base leading-8 text-gray-600">SimpleFrame can run standalone, embed into a new website, or support a staff-guided in-store consultation. The point is not software for its own sake — it is reducing friction between customer interest and a real order.</p>
+                <h2 className="text-3xl font-bold tracking-[-0.02em] text-gray-950 sm:text-4xl">The frame shop POS — with a merchant fee guarantee.</h2>
+                <p className="mt-4 text-base leading-8 text-gray-600">SimpleFrame can run standalone, embed into a new website, or support a staff-guided in-store consultation. Card processing is built in. Shops pay lower card-processing fees than they currently pay. Send us your processor statement — if we cannot beat it, we will say so honestly.</p>
                 <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                  {[
-                    ["Standalone", "iPad or desktop quoting."],
-                    ["Embedded", "Website quote requests and previews."],
-                    ["Integrated", "POS/payment-ready workflows."],
-                  ].map(([title, desc]) => (
+                  {simpleFrameModes.map(([title, desc]) => (
                     <div key={title} className="rounded-xl border border-gray-200 p-4">
                       <h3 className="mb-1 text-sm font-bold text-gray-950">{title}</h3>
                       <p className="m-0 text-xs leading-5 text-gray-600">{desc}</p>
                     </div>
                   ))}
                 </div>
-                <a href="https://simpleframe.app" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-amber-700 no-underline">
-                  Open SimpleFrame <ArrowRight size={16} />
-                </a>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href="https://simpleframe.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-amber-700 no-underline">
+                    Open SimpleFrame <ArrowRight size={16} />
+                  </a>
+                  <a href="https://pos.simpleframe.app/login" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-gray-700 no-underline hover:text-amber-700">
+                    Try the live POS demo <Play size={14} fill="currentColor" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 rounded-3xl border border-amber-200 bg-[#fffdf9] p-6 shadow-sm sm:p-8">
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
+                <div>
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
+                    <ShieldCheck size={14} /> Merchant fee guarantee
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-[-0.02em] text-gray-950 sm:text-3xl">Pay less to take cards than you do today.</h3>
+                  <p className="mt-3 text-base leading-8 text-gray-600">Email your latest processor statement to <a href="mailto:info@buildkind.tech" className="font-semibold text-amber-800 no-underline">info@buildkind.tech</a>. We compare it to SimpleFrame merchant processing. If we cannot beat what you currently pay, we tell you honestly — and we will not ask you to switch anyway.</p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-bold text-white no-underline shadow-lg shadow-amber-900/10" style={{ background: PRIMARY }}>
+                    Talk to BuildKind <ArrowRight size={16} />
+                  </a>
+                  <a href="mailto:info@buildkind.tech" className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-bold text-gray-900 no-underline hover:border-gray-500">
+                    <Mail size={15} /> info@buildkind.tech
+                  </a>
+                  <a href="https://simpleframe.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-bold text-gray-900 no-underline hover:border-gray-500">
+                    Open SimpleFrame <ArrowRight size={16} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -302,14 +353,10 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 max-w-3xl">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-amber-700">Investment</p>
-              <h2 className="text-3xl font-bold tracking-[-0.02em] text-gray-950 sm:text-4xl">Clear tracks for website, software, and custom workflow work.</h2>
+              <h2 className="text-3xl font-bold tracking-[-0.02em] text-gray-950 sm:text-4xl">Clear tracks for website, SimpleFrame POS, and custom workflow work.</h2>
             </div>
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-              {[
-                { name: "Website redesign", price: "From $2,500", desc: "Most full builds land around $5,000–$8,500 depending on content, pages, gallery depth, local SEO, and launch support.", points: ["Modern frame-shop website", "Content migration", "Local SEO foundation", "Inquiry/quote forms"] },
-                { name: "SimpleFrame POS", price: "$69/mo", desc: "Our cloud POS for custom frame shops — pricing, vendor catalogs, live frame preview, work orders, customers, and invoices in one place. White-glove setup and data migration included.", points: ["Custom framing POS", "120,000+ moulding catalog", "Live frame preview", "Work orders & invoices"] },
-                { name: "Custom workflow", price: "Custom quote", desc: "For payment flows, POS/API integration, staff dashboards, advanced automation, and ongoing operations support.", points: ["Stripe/payment flows", "POS-ready handoff", "Automation and follow-up", "Monthly support"] },
-              ].map((p) => (
+              {pricingTracks.map((p) => (
                 <div key={p.name} className="rounded-2xl border border-gray-200 bg-white p-7 shadow-sm">
                   <h3 className="mb-2 text-xl font-bold text-gray-950">{p.name}</h3>
                   <div className="mb-4 text-3xl font-bold tracking-[-0.03em] text-gray-950">{p.price}</div>
@@ -346,8 +393,8 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-amber-400">Free audit</p>
-              <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">Send your current site. I’ll review the website, quote path, and workflow gaps.</h2>
-              <p className="mt-4 text-base leading-8 text-gray-300">No generic sales deck. I’ll look at what customers see, how inquiries come in, what tools you use, and where BuildKind could make the process cleaner.</p>
+              <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">Send your current site — and your processor statement if you want a fee review.</h2>
+              <p className="mt-4 text-base leading-8 text-gray-300">No generic sales deck. I’ll look at what customers see, how inquiries come in, what you pay to take cards, and where BuildKind could make the process cleaner.</p>
               <div className="mt-7 flex flex-col gap-3 text-sm text-gray-300">
                 <a href="tel:+14696132763" className="inline-flex items-center gap-2 text-gray-300 no-underline"><PhoneCall size={15} color="#f59e0b" /> (469) 613-2763</a>
                 <a href="mailto:info@buildkind.tech" className="inline-flex items-center gap-2 text-gray-300 no-underline"><Mail size={15} color="#f59e0b" /> info@buildkind.tech</a>
@@ -366,7 +413,7 @@ export default function Home() {
                   <label className="text-sm font-bold text-gray-700">Email<input required type="email" value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))} placeholder="you@yourshop.com" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
                 </div>
                 <label className="mt-4 block text-sm font-bold text-gray-700">Shop name<input value={form.company} onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))} placeholder="Your frame shop" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
-                <label className="mt-4 block text-sm font-bold text-gray-700">What should I review?<textarea required rows={5} value={form.message} onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))} placeholder="Send your current site and what you want improved: more quote requests, better gallery, SimpleFrame, payments, automation, etc." className="mt-2 w-full resize-y rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal leading-6 outline-none focus:border-amber-600" /></label>
+                <label className="mt-4 block text-sm font-bold text-gray-700">What should I review?<textarea required rows={5} value={form.message} onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))} placeholder="Send your current site and what you want improved: more quote requests, better gallery, SimpleFrame, card-processing fees, automation, etc." className="mt-2 w-full resize-y rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal leading-6 outline-none focus:border-amber-600" /></label>
                 {status === "error" && <p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">Something went wrong. Email me directly: info@buildkind.tech</p>}
                 <button disabled={status === "loading"} type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg px-5 py-4 text-sm font-bold text-white disabled:opacity-60" style={{ background: PRIMARY }}>
                   {status === "loading" ? "Sending..." : <>Request free audit <ArrowRight size={16} /></>}
@@ -381,16 +428,16 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-start">
           <div>
             <Image src="/assets/buildkind-logo-light.svg" alt="BuildKind Tech" width={440} height={96} className="h-10 w-auto object-contain" unoptimized />
-            <p className="mt-3 max-w-sm text-sm leading-7 text-gray-500">Technology for frame shops: websites, SimpleFrame, and practical workflow systems built by a framer.</p>
+            <p className="mt-3 max-w-sm text-sm leading-7 text-gray-500">Technology for frame shops: websites, SimpleFrame POS with a merchant fee guarantee, and practical workflow systems built by a framer.</p>
           </div>
           <div className="flex flex-wrap gap-10 text-sm">
-            <div className="flex flex-col gap-2"><strong className="text-white">Products</strong><a href="https://simpleframe.app" className="text-gray-500 no-underline">SimpleFrame</a><a href="#services" className="text-gray-500 no-underline">Websites</a><a href="#workflow" className="text-gray-500 no-underline">Workflow systems</a></div>
+            <div className="flex flex-col gap-2"><strong className="text-white">Products</strong><a href="#simpleframe" className="text-gray-500 no-underline">Merchant fee guarantee</a><a href="https://simpleframe.app" className="text-gray-500 no-underline">SimpleFrame</a><a href="https://pos.simpleframe.app/login" className="text-gray-500 no-underline">Live POS demo</a><a href="#services" className="text-gray-500 no-underline">Websites</a></div>
             <div className="flex flex-col gap-2"><strong className="text-white">Contact</strong><a href="tel:+14696132763" className="text-gray-500 no-underline">(469) 613-2763</a><a href="mailto:info@buildkind.tech" className="text-gray-500 no-underline">info@buildkind.tech</a></div>
           </div>
         </div>
         <div className="mx-auto mt-8 flex max-w-7xl flex-col justify-between gap-3 border-t border-gray-800 pt-6 text-xs text-gray-600 sm:flex-row">
           <span>© 2026 BuildKind Tech LLC. All rights reserved.</span>
-          <a href="https://simpleframe.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-amber-500 no-underline"><Play size={12} fill="currentColor" /> Try SimpleFrame</a>
+          <a href="https://pos.simpleframe.app/login" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-amber-500 no-underline"><Play size={12} fill="currentColor" /> Try the live POS demo</a>
         </div>
       </footer>
     </>
