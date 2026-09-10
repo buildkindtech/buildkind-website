@@ -26,7 +26,6 @@ const WARM = "#faf7f1";
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "SimpleFrame", href: "#simpleframe" },
-  { label: "Work", href: "#recent-work" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
@@ -56,16 +55,6 @@ const pricingTracks = [
     desc: "For staff dashboards, POS/API integration, advanced automation, and ongoing operations support. Shop card processing runs through SimpleFrame merchant. Stripe stays available for BuildKind SaaS billing and custom app workflows — not the register.",
     points: ["SimpleFrame merchant for shop cards", "Stripe for SaaS / custom billing", "Automation and follow-up", "Monthly support"],
   },
-];
-
-const portfolio = [
-  { slug: "maxines-stillwater", name: "Maxine's Frame Shop", city: "Stillwater, OK", desc: "Diploma and custom framing site refresh for a long-running local shop." },
-  { slug: "nelsons-traverse-city", name: "Nelson's Moulding & Frame", city: "Traverse City, MI", desc: "Heritage frame shop positioning with a cleaner product and service path." },
-  { slug: "boulder-frameworks", name: "Boulder Frameworks", city: "Boulder, CO", desc: "Custom framing and gallery presentation with stronger visual hierarchy." },
-  { slug: "philip-carrollton", name: "Art & Frames", city: "Carrollton, TX", desc: "Retail frame shop website built around local search and gallery credibility." },
-  { slug: "village-houston", name: "Village Frame Gallery", city: "Houston, TX", desc: "Museum-grade framing and restoration positioning for higher-trust inquiries." },
-  { slug: "premier-argyle", name: "Premier Gallery", city: "Argyle, TX", desc: "Fine art gallery and custom framing site with premium local presentation." },
-  { slug: "reframe-lewisville", name: "ReFrame", city: "Lewisville, TX", desc: "Modern custom framing studio look with a simple inquiry path." },
 ];
 
 const services = [
@@ -174,8 +163,8 @@ export default function Home() {
                 <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-bold text-white no-underline shadow-lg shadow-amber-900/10" style={{ background: PRIMARY }}>
                   Get a Free Website & Ordering Audit <ArrowRight size={17} />
                 </a>
-                <a href="#recent-work" className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-bold text-gray-900 no-underline hover:border-gray-500">
-                  See recent work
+                <a href="#services" className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-bold text-gray-900 no-underline hover:border-gray-500">
+                  See our services
                 </a>
               </div>
               <div className="mt-8 grid max-w-xl grid-cols-3 gap-3 text-sm text-gray-600">
@@ -317,32 +306,6 @@ export default function Home() {
                   <div className="mb-5 text-xs font-bold tracking-[0.18em] text-amber-700">{p.step}</div>
                   <h3 className="mb-3 text-lg font-bold text-gray-950">{p.title}</h3>
                   <p className="m-0 text-sm leading-7 text-gray-600">{p.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="recent-work" className="scroll-mt-24 bg-white px-5 py-16 sm:px-8">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-              <div>
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-amber-700">Recent work</p>
-                <h2 className="text-3xl font-bold tracking-[-0.02em] text-gray-950 sm:text-4xl">Frame shop websites with real industry context.</h2>
-              </div>
-              <p className="max-w-md text-sm leading-7 text-gray-600">Each build starts with the shop’s actual services, story, location, and workflow — not stock copy or a generic agency template.</p>
-            </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {portfolio.map((site) => (
-                <div key={site.slug} className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-900/10">
-                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
-                    <Image src={`/assets/portfolio/${site.slug}-desktop.png`} alt={`${site.name} website in ${site.city}`} width={1280} height={800} className="h-full w-full object-cover object-top" />
-                  </div>
-                  <div className="p-5">
-                    <div className="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-700">{site.city}</div>
-                    <h3 className="mb-2 text-lg font-bold text-gray-950">{site.name}</h3>
-                    <p className="m-0 text-sm leading-6 text-gray-600">{site.desc}</p>
-                  </div>
                 </div>
               ))}
             </div>
