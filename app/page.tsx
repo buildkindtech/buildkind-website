@@ -90,6 +90,20 @@ const process = [
   { step: "04", title: "Operate and improve", desc: "Ongoing updates, new pages, workflow tweaks, automation, and support as the shop grows." },
 ];
 
+function PosChrome({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-950 shadow-xl shadow-gray-900/10">
+      <div className="flex items-center gap-2 bg-gray-800 px-4 py-3">
+        <span className="h-3 w-3 rounded-full bg-red-500" />
+        <span className="h-3 w-3 rounded-full bg-yellow-500" />
+        <span className="h-3 w-3 rounded-full bg-green-500" />
+        <span className="ml-3 truncate text-xs text-gray-400">{label}</span>
+      </div>
+      {children}
+    </div>
+  );
+}
+
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
@@ -148,7 +162,7 @@ export default function Home() {
       <main id="top">
         <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#faf7f1] pt-32 pb-20 sm:pt-36 sm:pb-24">
           <div className="absolute inset-0 opacity-[0.045]" style={{ backgroundImage: "linear-gradient(#111827 1px, transparent 1px), linear-gradient(90deg, #111827 1px, transparent 1px)", backgroundSize: "64px 64px" }} />
-          <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
                 Built for custom frame shops
@@ -173,11 +187,18 @@ export default function Home() {
                 <div className="rounded-xl border border-gray-200 bg-white p-3"><strong className="block text-gray-950">Site + workflow</strong> not just pages</div>
               </div>
             </div>
-            <div className="relative">
-              <div className="rounded-2xl border border-gray-200 bg-white p-3 shadow-2xl shadow-gray-900/10">
-                <Image src="/assets/simple-frame-interface.png" alt="SimpleFrame quoting and frame preview interface" width={720} height={840} priority className="h-auto w-full rounded-xl object-cover" />
-              </div>
-              <div className="absolute -bottom-6 left-5 right-5 rounded-2xl border border-gray-200 bg-white/95 p-4 shadow-xl shadow-gray-900/10 backdrop-blur">
+            <div>
+              <PosChrome label="simpleframe.app — new work order">
+                <Image
+                  src="/assets/simpleframe/pos-builder-2026-08.webp"
+                  alt="SimpleFrame POS work-order builder with artwork sizes, moulding and mat lines, a live frame preview, and order totals"
+                  width={1600}
+                  height={996}
+                  priority
+                  className="h-auto w-full bg-white"
+                />
+              </PosChrome>
+              <div className="mt-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-xl shadow-gray-900/10">
                 <div className="mb-2 flex items-center gap-2 text-sm font-bold text-gray-950"><Workflow size={17} color={PRIMARY} /> One connected customer flow</div>
                 <p className="m-0 text-sm leading-6 text-gray-600">Find you → request quote → preview options → approve → pay → follow up.</p>
               </div>
@@ -232,20 +253,16 @@ export default function Home() {
 
         <section className="scroll-mt-24 bg-white px-5 py-16 sm:px-8" id="simpleframe">
           <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              <div className="rounded-2xl border border-gray-200 bg-white p-3 shadow-xl shadow-gray-900/5">
-                <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-950">
-                  <div className="flex items-center gap-2 bg-gray-800 px-4 py-3">
-                    <span className="h-3 w-3 rounded-full bg-red-500" />
-                    <span className="h-3 w-3 rounded-full bg-yellow-500" />
-                    <span className="h-3 w-3 rounded-full bg-green-500" />
-                    <span className="ml-3 text-xs text-gray-400">simpleframe.app</span>
-                  </div>
-                  <video autoPlay loop muted playsInline className="block max-h-[560px] w-full bg-slate-950 object-contain">
-                    <source src="/assets/demo.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <PosChrome label="simpleframe.app — shop dashboard">
+                <Image
+                  src="/assets/simpleframe/pos-dashboard-2026-08.webp"
+                  alt="SimpleFrame POS dashboard with monthly sales, open receivables, a sales-and-collected trend, and A/R aging"
+                  width={1600}
+                  height={996}
+                  className="h-auto w-full bg-white"
+                />
+              </PosChrome>
               <div>
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-amber-700">SimpleFrame</p>
                 <h2 className="text-3xl font-bold tracking-[-0.02em] text-gray-950 sm:text-4xl">The frame shop POS — with a merchant fee guarantee.</h2>
@@ -267,6 +284,33 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <figure className="m-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                <Image
+                  src="/assets/simpleframe/pos-catalog-2026-08.webp"
+                  alt="SimpleFrame vendor moulding catalog with item codes, suppliers, cost, markup, and shop rates"
+                  width={1600}
+                  height={996}
+                  className="h-auto w-full"
+                />
+                <figcaption className="border-t border-gray-100 px-4 py-3 text-sm text-gray-600">
+                  <strong className="text-gray-950">Vendor catalog</strong> — mouldings with cost, markup, and shop rate.
+                </figcaption>
+              </figure>
+              <figure className="m-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                <Image
+                  src="/assets/simpleframe/pos-print.webp"
+                  alt="SimpleFrame customer invoice for a framing work order, with bill-to details, line items, and print or email actions"
+                  width={1600}
+                  height={1050}
+                  className="h-auto w-full"
+                />
+                <figcaption className="border-t border-gray-100 px-4 py-3 text-sm text-gray-600">
+                  <strong className="text-gray-950">Work-order invoice</strong> — print, PDF, or email from the same job.
+                </figcaption>
+              </figure>
             </div>
 
             <div className="mt-10 rounded-3xl border border-amber-200 bg-[#fffdf9] p-6 shadow-sm sm:p-8">
