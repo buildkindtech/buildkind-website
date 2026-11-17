@@ -1,11 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
+import { buildNotificationContent, validateContactPayload } from "./contact";
 
 export async function POST(req: NextRequest) {
-  const { name, email, company, message, interest } = await req.json();
+  let payload: unknown;
 
-  if (!name || !email || !message) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+  try {
+    payload = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
+
+  const validation = validateContactPayload(payload);
+
+  if (!validation.ok) {
+    return NextResponse.json({ error: validation.error }, { status: 400 });
+  }
+
+  if (validation.honeypot) {
+    return NextResponse.json({ success: true });
+  }
+
+  const { name, email } = validation.submission;
+  const notification = buildNotificationContent(validation.submission);
 
   const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
   if (!SENDGRID_API_KEY) {
@@ -16,18 +32,10 @@ export async function POST(req: NextRequest) {
     personalizations: [{ to: [{ email: "info@buildkind.tech" }] }],
     from: { email: "info@buildkind.tech", name: "BuildKind Tech Contact" },
     reply_to: { email, name },
-    subject: `New Inquiry from ${name}${company ? ` (${company})` : ""} — ${interest || "General"}`,
+    subject: notification.subject,
     content: [{
       type: "text/html",
-      value: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-        <p><strong>Interest:</strong> ${interest || "General"}</p>
-        <hr/>
-        <p>${message.replace(/\n/g, "<br/>")}</p>
-      `
+      value: notification.html,
     }]
   };
 

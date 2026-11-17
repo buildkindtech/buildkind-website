@@ -106,7 +106,7 @@ function PosChrome({ label, children }: { label: string; children: React.ReactNo
 
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", company: "", message: "", website: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -415,12 +415,16 @@ export default function Home() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="rounded-2xl border border-white/10 bg-white p-6 shadow-2xl shadow-black/20 sm:p-8">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label className="text-sm font-bold text-gray-700">Name<input required value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} placeholder="Your name" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
-                  <label className="text-sm font-bold text-gray-700">Email<input required type="email" value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))} placeholder="you@yourshop.com" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
+                <div className="sr-only" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))} />
                 </div>
-                <label className="mt-4 block text-sm font-bold text-gray-700">Shop name<input value={form.company} onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))} placeholder="Your frame shop" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
-                <label className="mt-4 block text-sm font-bold text-gray-700">What should I review?<textarea required rows={5} value={form.message} onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))} placeholder="Send your current site and what you want improved: more quote requests, better gallery, SimpleFrame, card-processing fees, automation, etc." className="mt-2 w-full resize-y rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal leading-6 outline-none focus:border-amber-600" /></label>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <label className="text-sm font-bold text-gray-700">Name<input required maxLength={200} value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} placeholder="Your name" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
+                  <label className="text-sm font-bold text-gray-700">Email<input required type="email" maxLength={254} value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))} placeholder="you@yourshop.com" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
+                </div>
+                <label className="mt-4 block text-sm font-bold text-gray-700">Shop name<input maxLength={200} value={form.company} onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))} placeholder="Your frame shop" className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal outline-none focus:border-amber-600" /></label>
+                <label className="mt-4 block text-sm font-bold text-gray-700">What should I review?<textarea required rows={5} maxLength={5000} value={form.message} onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))} placeholder="Send your current site and what you want improved: more quote requests, better gallery, SimpleFrame, card-processing fees, automation, etc." className="mt-2 w-full resize-y rounded-lg border border-gray-300 px-4 py-3 text-sm font-normal leading-6 outline-none focus:border-amber-600" /></label>
                 {status === "error" && <p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">Something went wrong. Email me directly: info@buildkind.tech</p>}
                 <button disabled={status === "loading"} type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg px-5 py-4 text-sm font-bold text-white disabled:opacity-60" style={{ background: PRIMARY }}>
                   {status === "loading" ? "Sending..." : <>Request free audit <ArrowRight size={16} /></>}
