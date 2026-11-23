@@ -45,7 +45,7 @@ const pricingTracks = [
   },
   {
     name: "SimpleFrame POS",
-    price: "$69/mo",
+    price: "From $79/month",
     desc: "Our cloud POS for custom frame shops — pricing, vendor catalogs, live frame preview, work orders, customers, invoices, and integrated merchant processing. White-glove setup and data migration included.",
     points: ["Custom framing POS", "120,000+ moulding catalog", "Work orders & invoices", "Beat your current card-processing fees"],
   },
